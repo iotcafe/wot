@@ -17,8 +17,8 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 | HTTP Status |     Result Code     | Message |
 |--------|:------------:|--------:|
-| 400    | 10001         | Sign Invalid      |
-| 400    | 10002         | ProductID Invalid      |
+| 200    | 10001         | Sign Invalid      |
+| 200    | 10002         | ProductID Invalid      |
 
 + Request (application/json)
 
@@ -33,7 +33,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
             }   
 
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
     + Body
 
@@ -42,17 +42,18 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
                 "DeviceID": "e1227e600b90b8a261c760fbaaaa5c97",
             }  
             
-### Delete Device [DELETE]
+### Delete Device [POST]
 
 #### Errors
 
 | HTTP Status |     Result Code     | Message |
 |--------|:------------:|--------:|
-| 400    | 10001         | Sign Invalid      |
-| 400    | 10003         | DeviceID Invalid      |
+| 200    | 10001         | Sign Invalid      |
+| 200    | 10003         | DeviceID Invalid      |
+| 200    | 10004         | DevicePassword Invalid      |
 
 
-+ Request (application/x-www-form-urlencoded)
++ Request (application/json)
 
     + Body
 
@@ -64,7 +65,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
             } 
 
 
-+ Response 200 (application/text)
++ Response 200 (application/json)
     + Body
 
             {
