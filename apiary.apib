@@ -1,0 +1,40 @@
+FORMAT: 1A
+HOST: http://wot.vowstar.com/
+
+# Push WoT API
+
+PUSH WebAPI for IoT
+
+About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/RFC 4918).
+
+# Group API for devices
+
+## Devices [/dev/devices]
+
+### Create Device [POST]
+
+#### Errors
+
+| HTTP Status |     Result Code     | Message |
+|--------|:------------:|--------:|
+| 400    | 10001         | ProductID Invalid      |
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "ProductID": "bb96cafb784d4109a905317afdff8f71",
+                "DevicePassword": "SomeRandomPasswordForDevice",
+                "DeviceMAC": "18:FE:34:01:02:03"
+            }   
+
+
++ Response 201 (application/json)
+
+    + Body
+
+            {
+                "Result": 0,
+                "DeviceID": "e1227e600b90b8a261c760fbaaaa5c97",
+            }  
