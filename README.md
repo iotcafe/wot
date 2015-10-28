@@ -1,2 +1,2 @@
-# pushwot
+# PUSH WoT
 PUSH WebAPI for IoT
