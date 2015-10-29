@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://wot.vowstar.com/
+HOST: https://vo.mjyun.com/
 
 # Push WoT API
 
@@ -11,7 +11,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 ## Devices [/dev/devices]
 
-### Create Device [POST]
+### Create Device [CREATE]
 
 #### Errors
 
@@ -28,8 +28,6 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
                 "ProductID": "bb96cafb784d4109a905317afdff8f71",
                 "DeviceMAC": "18:FE:34:01:02:03",
                 "DevicePassword": "SomeRandomPasswordForDevice",
-                "TimeStamp": "1446025125",
-                "Sign": "dd1e337d08add8a910c9face36f6152b"
             }   
 
 
@@ -42,7 +40,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
                 "DeviceID": "e1227e600b90b8a261c760fbaaaa5c97"
             }  
             
-### Delete Device [POST]
+### Delete Device [DELETE]
 
 #### Errors
 
@@ -60,8 +58,6 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
             {
                 "DeviceID": "e1227e600b90b8a261c760fbaaaa5c97",
                 "DevicePassword": "SomeRandomPasswordForDevice",
-                "TimeStamp": "1446025125",
-                "Sign": "dd1e337d08add8a910c9face36f6152b"
             } 
 
 
