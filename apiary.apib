@@ -42,6 +42,14 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
                 "DeviceID": "e1227e600b90b8a261c760fbaaaa5c97"
             }  
             
++ Response 400 (application/json)
+
+    + Body
+            {
+                "Result":10001,
+                "Message":"Invalid Paramters"
+            }
+            
 ### Delete Device [DELETE]
 
 #### Errors
@@ -52,7 +60,6 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 | 400         | 10002       | Invalid DeviceID       |
 | 400         | 10003       | Invalid DevicePassword |
 | 400         | 20002       | Error of DB            |
-
 
 + Request (application/json)
 
@@ -79,3 +86,4 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
                 "Result":10002,
                 "Message":"Invalid DeviceID"
             }
+            
