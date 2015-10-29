@@ -117,3 +117,16 @@ Special rules
 
 ID, MAC, UDP, TCP, etc., applied CamelCase, convert to Id, Mac, Udp, Tcp and so on.
         
+## Request Rules
+
+Allow: 0,GET 1,HEAD 2,PUT 3,DELETE 4,POST 5,OPTIONS
+
+| Request     | Operation      | Note                    |
+|-------------|:--------------:|------------------------:|
+| GET         | Read           | Read                    | 
+| HEAD        | Read Header    | Read header, probe      | 
+| PUT         | Update/Write   | Update                  | 
+| DELETE      | Delete         | Delete                  | 
+| POST        | Create/Write   | Create or update        |
+| OPTIONS     | Read Options   | Read options, probe     |
+
