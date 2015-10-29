@@ -15,20 +15,20 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 #### Errors
 
-| HTTP Status | Result Code | Message                |
-|-------------|:-----------:|-----------------------:|
-| 400         | 10001       | Invalid Paramters      |
-| 400         | 10002       | Invalid ProductID      |
-| 400         | 20001       | Error gen dvid         |
-| 400         | 20002       | Error of DB            |
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid paramters                       |
+| 400         | 10002       | Invalid product ID                      |
+| 400         | 20001       | Error gen dvid                          |
+| 400         | 20002       | Error of DB                             |
 
 + Request (application/json)
 
     + Body
 
             {
-                "ProductID": "bb96cafb784d4109a905317afdff8f71",
-                "DeviceMAC": "18:FE:34:01:02:03",
+                "ProductId": "bb96cafb784d4109a905317afdff8f71",
+                "DeviceMac": "18:FE:34:01:02:03",
                 "DevicePassword": "SomeRandomPasswordForDevice"
             }   
 
@@ -39,7 +39,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
             {
                 "Result": 0,
-                "DeviceID": "e1227e600b90b8a261c760fbaaaa5c97"
+                "DeviceId": "e1227e600b90b8a261c760fbaaaa5c97"
             }  
             
 + Response 400 (application/json)
@@ -54,19 +54,19 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 #### Errors
 
-| HTTP Status | Result Code | Message                |
-|-------------|:-----------:|-----------------------:|
-| 400         | 10001       | Invalid Paramters      |
-| 400         | 10002       | Invalid DeviceID       |
-| 400         | 10003       | Invalid DevicePassword |
-| 400         | 20002       | Error of DB            |
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid paramters                       |
+| 400         | 10002       | Invalid device ID                       |
+| 400         | 10003       | Invalid device password                 |
+| 400         | 20002       | Error of DB                             |
 
 + Request (application/json)
 
     + Body
 
             {
-                "DeviceID": "e1227e600b90b8a261c760fbaaaa5c97",
+                "DeviceId": "e1227e600b90b8a261c760fbaaaa5c97",
                 "DevicePassword": "SomeRandomPasswordForDevice"
             } 
 
@@ -84,18 +84,33 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
     + Body
             {
                 "Result":10002,
-                "Message":"Invalid DeviceID"
+                "Message":"Invalid DeviceId"
             }
 
  
 # Group Rules
 
 ## Naming Rules
-Rulses for naming ProductId and DeviceID. 
+
+Rules for naming ProductId and DeviceId
 
 | Name      | explain             | Length | example        | limit                 |
 |-----------|:-------------------:|-------:|---------------:|----------------------:|
-|ProductId  | "WotP"+ Digit(10)   | 14     | WotP0123456789 | max digit:2147483647  | 
-|DeviceID   | "WotD"+ Digit(10)   | 14     | WotD0123456789 | max digit:4294967295  |
+| ProductId | "WotP"+ Digit(10)   | 14     | WotP0123456789 | max digit:2147483647  | 
+| DeviceId  | "WotD"+ Digit(10)   | 14     | WotD0123456789 | max digit:4294967295  |
 
-When there are more than 4294967295 devices, we can use other Prefix for dvid           
+When there are more than 4294967295 devices, we can use other Prefix for DeviceId   
+
+Rules for naming JSON Data and any other objects
+
+We using Camel-Case for JSON object naming.
+
+| Type        | Naming rule         | example                 |
+|-------------|:-------------------:|------------------------:|
+| JSON Data   | UpperCamelCase      | ProductId               | 
+| Class       | UpperCamelCase      | TestClass               | 
+| Variable    | lowerCamelCase      | testVariable            | 
+| Method      | lowerCamelCase      | testMethod()            | 
+| Function    | lowerCamelCase      | testFunction()          |
+
+        
