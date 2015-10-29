@@ -92,7 +92,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 ## Naming Rules
 
-Rules for naming ProductId and DeviceId
+### Rules for naming ProductId and DeviceId
 
 | Name      | explain             | Length | example        | limit                 |
 |-----------|:-------------------:|-------:|---------------:|----------------------:|
@@ -101,7 +101,7 @@ Rules for naming ProductId and DeviceId
 
 When there are more than 4294967295 devices, we can use other Prefix for DeviceId   
 
-Rules for naming JSON Data and any other objects
+### Rules for naming JSON Data and any other objects
 
 We using Camel-Case for JSON object naming.
 
@@ -113,4 +113,7 @@ We using Camel-Case for JSON object naming.
 | Method      | lowerCamelCase      | testMethod()            | 
 | Function    | lowerCamelCase      | testFunction()          |
 
+Special rules
+
+ID, MAC, UDP, TCP, etc., applied CamelCase, convert to Id, Mac, Udp, Tcp and so on.
         
