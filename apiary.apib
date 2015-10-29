@@ -17,7 +17,10 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 | HTTP Status |     Result Code     | Message |
 |--------|:------------:|--------:|
-| 400    | 10001         | ProductID Invalid      |
+| 400    | 10001         | Invalid Paramters      |
+| 400    | 10002         | ProductID Invalid      |
+| 400    | 20001         | Error gen dvid      |
+| 400    | 20002         | Error of DB      |
 
 + Request (application/json)
 
@@ -45,8 +48,10 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 | HTTP Status |     Result Code     | Message |
 |--------|:------------:|--------:|
+| 400    | 10001         | Invalid Paramters     |
 | 400    | 10002         | DeviceID Invalid      |
-| 400    | 10003         | DevicePassword Invalid      |
+| 400    | 10003         | DevicePassword Invalid |
+| 400    | 20002         | Error of DB      |
 
 
 + Request (application/json)
