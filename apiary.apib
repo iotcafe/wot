@@ -86,4 +86,16 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
                 "Result":10002,
                 "Message":"Invalid DeviceID"
             }
-            
+
+ 
+# Group Rules
+
+## Name Rules
+Rulses for name productid and dvid. 
+
+| Name | explain  | Length | example | limit |
+|-----------|:-------------------:|----:|--------------:|------------:|
+|ProductId  | "WotP"+ Digit(10)   | 14  | WotP0123456789 | max digit:2147483647  | 
+|Dvid       | "WotD"+ Digit(10)   | 14  | WotD0123456789 | max digit:4294967295  |
+
+When there are more than 4294967295 devices, we can use other Prefix for dvid           
