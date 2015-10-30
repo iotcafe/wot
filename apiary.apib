@@ -13,6 +13,8 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 ### Create Device [POST]
 
+Create device by product ID, and get device ID.
+
 #### Errors
 
 | HTTP Status | Result Code | Message                                 |
@@ -27,7 +29,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
     + Body
 
             {
-                "ProductId": "bb96cafb784d4109a905317afdff8f71",
+                "ProductId": "WotP0123456789",
                 "DeviceMac": "18:FE:34:01:02:03",
                 "DevicePassword": "SomeRandomPasswordForDevice"
             }   
@@ -39,18 +41,21 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
             {
                 "Result": 0,
-                "DeviceId": "e1227e600b90b8a261c760fbaaaa5c97"
+                "DeviceId": "WotD0123456789"
             }  
             
 + Response 400 (application/json)
 
     + Body
+    
             {
                 "Result":10001,
                 "Message":"Invalid Paramters"
             }
             
 ### Delete Device [DELETE]
+
+Delete device by device ID and device password.
 
 #### Errors
 
@@ -66,7 +71,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
     + Body
 
             {
-                "DeviceId": "e1227e600b90b8a261c760fbaaaa5c97",
+                "DeviceId": "WotD0123456789",
                 "DevicePassword": "SomeRandomPasswordForDevice"
             } 
 
@@ -82,12 +87,47 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 + Response 400 (application/json)
 
     + Body
+
             {
                 "Result":10002,
                 "Message":"Invalid DeviceId"
             }
+            
+## Device Distribution [/dev/distribution]
 
- 
+### Device Distribution [POST]
+
+Get M2M domain and real-time from cloud, calibrate device's RTC clock.
+
+**Notice:** Timestamp is from server's time.
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "DeviceId": "WotD0123456789",
+            } 
+            
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "Host":"s123456.m2m.mjyun.com",
+                "Port":"3128",
+                "Timestamp":1410318106
+            }
+            
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "Result":10002,
+                "Message":"Invalid DeviceId"
+            }
+               
 # Group Rules
 
 ## Naming Rules
