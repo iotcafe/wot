@@ -57,8 +57,8 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 | HTTP Status | Result Code | Message                                 |
 |-------------|:-----------:|----------------------------------------:|
 | 400         | 10001       | Invalid paramters                       |
-| 400         | 10002       | Invalid device ID                       |
-| 400         | 10003       | Invalid device password                 |
+| 400         | 10003       | Invalid device ID                       |
+| 400         | 10004       | Invalid device password                 |
 | 400         | 20002       | Error of DB                             |
 
 + Request (application/json)
@@ -129,4 +129,16 @@ Allow: 0,GET 1,HEAD 2,PUT 3,DELETE 4,POST 5,OPTIONS
 | DELETE      | Delete         | Delete                  | 
 | POST        | Create/Write   | Create or update        |
 | OPTIONS     | Read Options   | Read options, probe     |
+
+## Result Code
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 200         | 0           | OK                                      |
+| 400         | 10001       | Invalid paramters                       |
+| 400         | 10002       | Invalid product ID                      |
+| 400         | 10003       | Invalid device ID                       |
+| 400         | 10004       | Invalid device password                 |
+| 400         | 20001       | Error gen dvid                          |
+| 400         | 20002       | Error of DB                             |
 
