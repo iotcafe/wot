@@ -101,6 +101,14 @@ Get M2M domain and real-time from cloud, calibrate device's RTC clock.
 
 **Notice:** Timestamp is from server's time.
 
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid paramters                       |
+| 400         | 10003       | Invalid device ID                       |
+| 400         | 20002       | Error of DB                             |
+
 + Request (application/json)
 
     + Body
