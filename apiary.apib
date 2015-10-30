@@ -122,9 +122,57 @@ Get M2M domain and real-time(UNIX timestamp) from cloud, calibrate device's RTC 
     + Body
 
             {
-                "Host":"s123456.m2m.mjyun.com",
-                "Port":"3128",
-                "Timestamp":1410318106
+                "M2mHost":"s123456.m2m.mjyun.com",
+                "M2mPort":"3128",
+                "M2mTimestamp":1410318106
+            }
+            
++ Response 400 (application/json)
+
+    + Body
+
+            {
+                "Result":10002,
+                "Message":"Invalid DeviceId"
+            }
+            
+## Device OTA [/dev/ota/v1.0]
+
+### Device OTA [POST]
+
+Device get latest firmware from cloud.
+
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid paramters                       |
+| 400         | 10003       | Invalid device ID                       |
+| 400         | 10100       | Invalid firmware                        |
+| 400         | 20002       | Error of DB                             |
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "DeviceId": "WotD0123456789",
+                "DevicePassword": "SomeRandomPasswordForDevice",
+                "HardwareVersion":"1.0.0.0",
+                "FirmwareVersion":"1.0.0.0",
+                "FirmwareType":"FtUser1"
+            } 
+            
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "HardwareVersion":"1.0.0.0",
+                "FirmwareVersion":"1.0.0.1",
+                "FirmwareType":"FtUser1",
+                "FirmwareUrl":"http://download.wot.mjyun.com/xxxxxxx.bin",
+                "FirmwareMD5":"8c34d611f057adab20af1dde636be4bb"
             }
             
 + Response 400 (application/json)
@@ -187,6 +235,7 @@ Allow: 0,GET 1,HEAD 2,PUT 3,DELETE 4,POST 5,OPTIONS
 | 400         | 10002       | Invalid product ID                      |
 | 400         | 10003       | Invalid device ID                       |
 | 400         | 10004       | Invalid device password                 |
+| 400         | 10100       | Invalid firmware                        |
 | 400         | 20001       | Error gen dvid                          |
 | 400         | 20002       | Error of DB                             |
 
