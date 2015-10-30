@@ -19,7 +19,7 @@ Create device by product ID, and get device ID.
 
 | HTTP Status | Result Code | Message                                 |
 |-------------|:-----------:|----------------------------------------:|
-| 400         | 10001       | Invalid paramters                       |
+| 400         | 10001       | Invalid parameters                      |
 | 400         | 10002       | Invalid product ID                      |
 | 400         | 20001       | Error gen dvid                          |
 | 400         | 20002       | Error of DB                             |
@@ -50,7 +50,7 @@ Create device by product ID, and get device ID.
     
             {
                 "Result":10001,
-                "Message":"Invalid Paramters"
+                "Message":"Invalid Parameters
             }
             
 ### Delete Device [DELETE]
@@ -61,7 +61,7 @@ Delete device by device ID and device password.
 
 | HTTP Status | Result Code | Message                                 |
 |-------------|:-----------:|----------------------------------------:|
-| 400         | 10001       | Invalid paramters                       |
+| 400         | 10001       | Invalid parameters                      |
 | 400         | 10003       | Invalid device ID                       |
 | 400         | 10004       | Invalid device password                 |
 | 400         | 20002       | Error of DB                             |
@@ -105,7 +105,7 @@ Get M2M domain and real-time(UNIX timestamp) from cloud, calibrate device's RTC 
 
 | HTTP Status | Result Code | Message                                 |
 |-------------|:-----------:|----------------------------------------:|
-| 400         | 10001       | Invalid paramters                       |
+| 400         | 10001       | Invalid parameters                      |
 | 400         | 10003       | Invalid device ID                       |
 | 400         | 20002       | Error of DB                             |
 
@@ -146,7 +146,7 @@ Device get latest firmware from cloud.
 
 | HTTP Status | Result Code | Message                                 |
 |-------------|:-----------:|----------------------------------------:|
-| 400         | 10001       | Invalid paramters                       |
+| 400         | 10001       | Invalid parameters                      |
 | 400         | 10003       | Invalid device ID                       |
 | 400         | 10100       | Invalid firmware                        |
 | 400         | 20002       | Error of DB                             |
@@ -231,7 +231,7 @@ Allow: 0,GET 1,HEAD 2,PUT 3,DELETE 4,POST 5,OPTIONS
 | HTTP Status | Result Code | Message                                 |
 |-------------|:-----------:|----------------------------------------:|
 | 200         | 0           | OK                                      |
-| 400         | 10001       | Invalid paramters                       |
+| 400         | 10001       | Invalid parameters                      |
 | 400         | 10002       | Invalid product ID                      |
 | 400         | 10003       | Invalid device ID                       |
 | 400         | 10004       | Invalid device password                 |
