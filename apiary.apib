@@ -25,6 +25,7 @@ Create device by product ID, and get device ID.
 | 400         | 20001       | Error gen dvid                          |
 | 400         | 20002       | Error of DB                             |
 
+
 + Request (application/json)
 
     + Body
@@ -67,6 +68,7 @@ Delete device by device ID and device password.
 | 400         | 10003       | Invalid device ID                       |
 | 400         | 10004       | Invalid device password                 |
 | 400         | 20002       | Error of DB                             |
+
 
 + Request (application/json)
 
@@ -191,7 +193,7 @@ Device get latest firmware from cloud.
 
 # Group API for users
 
-## Users [usr/users]
+## Verification Code [/usr/code]
 
 ### Phone Verification Code [Get]
 
@@ -206,6 +208,7 @@ Get the verification code, use for register, change password or other Verificati
 | 400         | 10009       | Too frequent to gen code in 60s         |
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error to Notice User                    |
+
 
 + Request (application/json)
 
@@ -233,8 +236,9 @@ Get the verification code, use for register, change password or other Verificati
                 "Message": "Invalid Parameters"
             }
 
+## Users [/usr/users]
 
-### Register User/Change User(phone) Password [POST]
+### Register User [POST]
 
 Register user by phonenum/password/code. We also use to change the password, to avoid this: 
  One user's phone has been registered, but he/she forgot. 
@@ -253,6 +257,7 @@ First step is call other interface to get the verification code.
 | 400         | 10011       | Invalid User Password                   |
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error to Db                             |
+
 
 + Request (application/json)
 
