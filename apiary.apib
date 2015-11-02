@@ -179,7 +179,7 @@ Device get latest firmware from cloud.
 + Response 200 (application/json)
     + Body 
             {
-                "NeedUpdate":"0",
+                "NeedUpdate":"0"
             }
             
 + Response 400 (application/json)
@@ -191,13 +191,14 @@ Device get latest firmware from cloud.
                 "Message":"Invalid DeviceId"
             }
 
+
 # Group API for users
 
-## Verification Code [/usr/code]
+## Code [/usr/code]
 
 ### Phone Verification Code [Get]
 
-Get the verification code, use for register, change password or other Verification operation.
+Get the verification code, used for register, change password or other Verification operation.
 
 #### Errors
 
@@ -236,13 +237,14 @@ Get the verification code, use for register, change password or other Verificati
                 "Message": "Invalid Parameters"
             }
 
+
 ## Users [/usr/users]
 
 ### Register User [POST]
 
 Register user by phonenum/password/code. We also use to change the password, to avoid this: 
  One user's phone has been registered, but he/she forgot. 
- He/she execute the register process, but get "Phone has registeredi" at the last step.
+ He/she execute the register process, but get PHONE HAS REGISTERED at the last step.
  This would be Unfriendly. 
 
 First step is call other interface to get the verification code.
