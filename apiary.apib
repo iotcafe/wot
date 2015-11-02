@@ -159,7 +159,7 @@ Device get latest firmware from cloud.
             {
                 "DeviceId": "WotD0123456789",
                 "DevicePassword": "SomeRandomPasswordForDevice",
-                "FirmwareID":"WotF0123456789",
+                "FirmwareId":"WotF0123456789",
                 "FirmwareVersion":"1.0.0.0"
             } 
             
@@ -172,6 +172,12 @@ Device get latest firmware from cloud.
                 "FirmwareVersion":"1.0.0.1",
                 "FirmwareUrl":"http://download.wot.mjyun.com/xxxxxxx.bin",
                 "FirmwareMD5":"8c34d611f057adab20af1dde636be4bb"
+            }
+
++ Response 200 (application/json)
+    + Body 
+            {
+                "NeedUpdate":"0",
             }
             
 + Response 400 (application/json)
