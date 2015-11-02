@@ -211,27 +211,27 @@ Get the verification code, use for register, change password or other Verificati
 
     + Body
 
-        {
-            "PhoneNumber": "13912344321"
-        }
+            {
+                "PhoneNumber": "13912344321"
+            }
     
 + Response 200 (application/json)
 
     + Body 
         
-        {
-            "Result": 0,
-            "Message": "Ok"
-        }
+            {
+                "Result": 0,
+                "Message": "Ok"
+            }
 
 + Response 400 (application/json)
 
     + Body
     
-        {
-            "Result": 10001,
-            "Message": "Invalid Parameters"
-        }
+            {
+                "Result": 10001,
+                "Message": "Invalid Parameters"
+            }
 
 
 ### Register User/Change User(phone) Password [POST]
@@ -254,33 +254,33 @@ First step is call other interface to get the verification code.
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error to Db                             |
 
- + Request (application/json)
++ Request (application/json)
 
     + Body
 
-        {
-            "PhoneNumber": "13912344321",
-            "Code": "778623",
-            "Password": "UserPasswd"
-        }
+            {
+                "PhoneNumber": "13912344321",
+                "Code": "778623",
+                "Password": "UserPasswd"
+            }
     
 + Response 200 (application/json)
 
     + Body 
         
-        {
-            "Result": 0,
-            "Message": "Ok"
-        }
+            {
+                "Result": 0,
+                "Message": "Ok"
+            }
 
 + Response 400 (application/json)
 
     + Body
     
-        {
-            "Result": 10001,
-            "Message": "Invalid Parameters"
-        }
+            {
+                "Result": 10001,
+                "Message": "Invalid Parameters"
+            }
               
 # Group Rules
 
