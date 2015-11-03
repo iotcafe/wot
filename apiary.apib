@@ -301,7 +301,6 @@ User login by phone and password, get the userid
 |-------------|:-----------:|----------------------------------------:|
 | 400         | 10001       | Invalid parameters                      |
 | 400         | 10008       | Invalid Phone Number                    |
-| 400         | 10010       | Invalid Verifaction Code                |
 | 400         | 10011       | Invalid User Password                   |
 | 400         | 10012       | Unmatched User Password                 |
 | 400         | 10013       | Unregisted Phone                        |
@@ -335,7 +334,146 @@ User login by phone and password, get the userid
                 "Result": 10001,
                 "Message": "Invalid Parameters"
             }
-             
+            
+## Operate Device [/usr/dev]
+
+### Bind Device [POST]
+
+Bind ONE Device by dvid and password.
+
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid parameters                      |
+| 400         | 10003       | Invalid device ID                       |
+| 400         | 10004       | Invalid device password                 |
+| 400         | 10005       | Invalid request method                  |
+| 400         | 10014       | Invalid User ID                         |
+| 400         | 20003       | Error of Redis                          |
+| 400         | 20004       | Error of Db                             |
+| 400         | 30001       | Device Has Binded                       |
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "DeviceId": "WotD0123456789",
+                "DevicePassword": "UserPasswd",
+                "UserId": "WotU0000000001"
+            }
+    
++ Response 200 (application/json)
+
+    + Body 
+        
+            {
+                "Result": 0,
+                "Message": "OK"
+            }
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "Result": 10001,
+                "Message": "Invalid Parameters"
+            }
+
+### Unbind Device [DELETE]
+
+UnBind ONE Device by UserID/DeviceID.
+ 
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid parameters                      |
+| 400         | 10003       | Invalid device ID                       |
+| 400         | 10005       | Invalid request method                  |
+| 400         | 10014       | Invalid User ID                         |
+| 400         | 20003       | Error of Redis                          |
+| 400         | 20004       | Error of Db                             |
+| 400         | 30001       | Device Has Binded                       |
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "DeviceId": "WotD0123456789",
+                "UserId": "WotU0000000001"
+            }
+    
++ Response 200 (application/json)
+
+    + Body 
+        
+            {
+                "Result": 0,
+                "Message": "OK"
+            }
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "Result": 10001,
+                "Message": "Invalid Parameters"
+            }
+
+### List Devices [GET]
+
+Get devices list under the user.
+
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid parameters                      |
+| 400         | 10003       | Invalid device ID                       |
+| 400         | 10005       | Invalid request method                  |
+| 400         | 10014       | Invalid User ID                         |
+| 400         | 20003       | Error of Redis                          |
+| 400         | 20004       | Error of Db                             |
+| 400         | 30001       | Device Has Binded                       |
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "UserId": "WotU0000000001"
+            }
+    
++ Response 200 (application/json)
+
+    + Body 
+        
+            {
+                "Result": 0,
+                "Devices":[
+                    {
+                        "DeviceId":"MotD0000000001"
+                    },
+                    {
+                        "DeviceId":"MotD0000000002"
+                    }
+                ]
+            }
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "Result": 10001,
+                "Message": "Invalid Parameters"
+            }
+ 
 # Group Rules
 
 ## Naming Rules
@@ -397,7 +535,10 @@ Allow: 0,GET 1,HEAD 2,PUT 3,DELETE 4,POST 5,OPTIONS
 | 400         | 10011       | Invalid User Password                   |
 | 400         | 10012       | Unmatched User Password                 |
 | 400         | 10013       | Unregisted Phone                        |
+| 400         | 10014       | Invalid User ID                         |
 | 400         | 20001       | Error gen dvid                          |
 | 400         | 20002       | Error of DB                             |
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error to Notice User                    |
+| 400         | 30001       | Device Has Binded                       |  
+| 400         | 30002       | Device Has NOT Binded                   |  
