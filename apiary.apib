@@ -279,7 +279,8 @@ First step is call other interface to get the verification code.
         
             {
                 "Result": 0,
-                "UserId": "WotU0000000001"
+                "UserId": "WotU0000000001",
+                "Token": "tkn_b3275960d68fda9d831facc0426c3bbc"
             }
 
 + Response 400 (application/json)
@@ -323,7 +324,8 @@ User login by phone and password, get the userid
         
             {
                 "Result": 0,
-                "UserId": "WotU0000000001"
+                "UserId": "WotU0000000001",
+                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc"
             }
 
 + Response 400 (application/json)
@@ -350,6 +352,7 @@ Bind ONE Device by dvid and password.
 | 400         | 10004       | Invalid device password                 |
 | 400         | 10005       | Invalid request method                  |
 | 400         | 10014       | Invalid User ID                         |
+| 400         | 10015       | Invalid Token                           |
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error of Db                             |
 | 400         | 30001       | Device Has Binded                       |
@@ -361,7 +364,8 @@ Bind ONE Device by dvid and password.
             {
                 "DeviceId": "WotD0123456789",
                 "DevicePassword": "UserPasswd",
-                "UserId": "WotU0000000001"
+                "UserId": "WotU0000000001",
+                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc"
             }
     
 + Response 200 (application/json)
@@ -394,6 +398,7 @@ UnBind ONE Device by UserID/DeviceID.
 | 400         | 10003       | Invalid device ID                       |
 | 400         | 10005       | Invalid request method                  |
 | 400         | 10014       | Invalid User ID                         |
+| 400         | 10015       | Invalid Token                           |
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error of Db                             |
 | 400         | 30001       | Device Has Binded                       |
@@ -404,7 +409,8 @@ UnBind ONE Device by UserID/DeviceID.
 
             {
                 "DeviceId": "WotD0123456789",
-                "UserId": "WotU0000000001"
+                "UserId": "WotU0000000001",
+                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc"
             }
     
 + Response 200 (application/json)
@@ -437,6 +443,7 @@ Get devices list under the user.
 | 400         | 10003       | Invalid device ID                       |
 | 400         | 10005       | Invalid request method                  |
 | 400         | 10014       | Invalid User ID                         |
+| 400         | 10015       | Invalid Token                           |
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error of Db                             |
 | 400         | 30001       | Device Has Binded                       |
@@ -446,7 +453,8 @@ Get devices list under the user.
     + Body
 
             {
-                "UserId": "WotU0000000001"
+                "UserId": "WotU0000000001",
+                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc"
             }
     
 + Response 200 (application/json)
@@ -536,6 +544,7 @@ Allow: 0,GET 1,HEAD 2,PUT 3,DELETE 4,POST 5,OPTIONS
 | 400         | 10012       | Unmatched User Password                 |
 | 400         | 10013       | Unregisted Phone                        |
 | 400         | 10014       | Invalid User ID                         |
+| 400         | 10015       | Invalid Token                           |
 | 400         | 20001       | Error gen dvid                          |
 | 400         | 20002       | Error of DB                             |
 | 400         | 20003       | Error of Redis                          |
