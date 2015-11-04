@@ -355,27 +355,43 @@ Bind ONE Device by dvid and password.
 | 400         | 10015       | Invalid Token                           |
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error of Db                             |
-| 400         | 30001       | Device Has Binded                       |
 
 + Request (application/json)
 
     + Body
 
-            {
-                "DeviceId": "WotD0123456789",
-                "DevicePassword": "UserPasswd",
-                "UserId": "WotU0000000001",
-                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc"
-            }
-    
+       {
+            "UserId":"WotU0000000001",
+            "Token":"tkn_b3275960d68fda9d831facc0426c3bbc",
+            "Devices":[
+                {
+                    "DeviceId":"WotD0123456789",
+                    "DevicePassword":"DevicePasswd",
+                },
+                {
+                    "DeviceId":"WotD0123456788",
+                    "DevicePassword":"DevicePasswd",
+                }
+            ]
+        }
+
+   
+ 
 + Response 200 (application/json)
 
     + Body 
-        
-            {
-                "Result": 0,
-                "Message": "OK"
-            }
+ 
+        {
+            "Result":0,
+            "Success":[
+                    "WotD0123456789",
+                    "WotD0123456788"
+            ],
+            "Failed":[
+                    "WotD0123456789"
+            ]
+        }
+       
 
 + Response 400 (application/json)
 
@@ -401,26 +417,41 @@ UnBind ONE Device by UserID/DeviceID.
 | 400         | 10015       | Invalid Token                           |
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error of Db                             |
-| 400         | 30001       | Device Has Binded                       |
 
 + Request (application/json)
 
     + Body
 
-            {
-                "DeviceId": "WotD0123456789",
-                "UserId": "WotU0000000001",
-                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc"
-            }
-    
+       {
+            "UserId":"WotU0000000001",
+            "Token":"tkn_b3275960d68fda9d831facc0426c3bbc",
+            "Devices":[
+                {
+                    "DeviceId":"WotD0123456789",
+                },
+                {
+                    "DeviceId":"WotD0123456788",
+                }
+            ]
+        }
+
+   
+ 
 + Response 200 (application/json)
 
     + Body 
         
-            {
-                "Result": 0,
-                "Message": "OK"
-            }
+        {
+            "Result":0,
+            "Success":[
+                    "WotD0123456789",
+                    "WotD0123456788",
+            ],
+            "Failed":[
+                    "WotD0123456789"
+            ]
+        }
+
 
 + Response 400 (application/json)
 
@@ -549,5 +580,3 @@ Allow: 0,GET 1,HEAD 2,PUT 3,DELETE 4,POST 5,OPTIONS
 | 400         | 20002       | Error of DB                             |
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error to Notice User                    |
-| 400         | 30001       | Device Has Binded                       |  
-| 400         | 30002       | Device Has NOT Binded                   |  
