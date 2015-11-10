@@ -360,20 +360,20 @@ Bind ONE Device by dvid and password.
 
     + Body
 
-       {
-            "UserId":"WotU0000000001",
-            "Token":"tkn_b3275960d68fda9d831facc0426c3bbc",
-            "Devices":[
-                {
-                    "DeviceId":"WotD0123456789",
-                    "DevicePassword":"DevicePasswd",
-                },
-                {
-                    "DeviceId":"WotD0123456788",
-                    "DevicePassword":"DevicePasswd",
-                }
-            ]
-        }
+            {
+                "UserId":"WotU0000000001",
+                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc",
+                "Devices":[
+                    {
+                        "DeviceId":"WotD0123456789",
+                        "DevicePassword":"DevicePasswd"
+                    },
+                    {
+                        "DeviceId":"WotD0123456788",
+                        "DevicePassword":"DevicePasswd"
+                    }
+                ]
+            }
 
    
  
@@ -381,16 +381,16 @@ Bind ONE Device by dvid and password.
 
     + Body 
  
-        {
-            "Result":0,
-            "Success":[
+            {
+                "Result":0,
+                "Success":[
                     "WotD0123456789",
                     "WotD0123456788"
-            ],
-            "Failed":[
+                ],
+                "Failed":[
                     "WotD0123456789"
-            ]
-        }
+                ]
+            }
        
 
 + Response 400 (application/json)
@@ -422,18 +422,18 @@ UnBind ONE Device by UserID/DeviceID.
 
     + Body
 
-       {
-            "UserId":"WotU0000000001",
-            "Token":"tkn_b3275960d68fda9d831facc0426c3bbc",
-            "Devices":[
-                {
-                    "DeviceId":"WotD0123456789",
-                },
-                {
-                    "DeviceId":"WotD0123456788",
-                }
-            ]
-        }
+            {
+                "UserId":"WotU0000000001",
+                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc",
+                "Devices":[
+                    {
+                        "DeviceId":"WotD0123456789"
+                    },
+                    {
+                        "DeviceId":"WotD0123456788"
+                    }
+                ]
+            }
 
    
  
@@ -441,16 +441,16 @@ UnBind ONE Device by UserID/DeviceID.
 
     + Body 
         
-        {
-            "Result":0,
-            "Success":[
+            {
+                "Result":0,
+                "Success":[
                     "WotD0123456789",
-                    "WotD0123456788",
-            ],
-            "Failed":[
+                    "WotD0123456788"
+                ],
+                "Failed":[
                     "WotD0123456789"
-            ]
-        }
+                ]
+            }
 
 
 + Response 400 (application/json)
