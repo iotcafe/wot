@@ -31,10 +31,10 @@ Create device by product ID, and get device ID.
     + Body
 
             {
-                "ProductId": "WotP0123456789",
-                "DeviceMac": "18:FE:34:01:02:03",
-                "DevicePassword": "SomeRandomPasswordForDevice",
-                "HardwareVersion":"1.0.0.0"
+                "productId": "WotP0123456789",
+                "deviceMac": "18:FE:34:01:02:03",
+                "devicePassword": "SomeRandomPasswordForDevice",
+                "hardwareVersion":"1.0.0.0"
             }   
 
 
@@ -43,8 +43,8 @@ Create device by product ID, and get device ID.
     + Body
 
             {
-                "Result": 0,
-                "DeviceId": "WotD0123456789"
+                "result": 0,
+                "deviceId": "WotD0123456789"
             }  
             
 + Response 400 (application/json)
@@ -52,8 +52,8 @@ Create device by product ID, and get device ID.
     + Body
     
             {
-                "Result":10001,
-                "Message":"Invalid Parameters"
+                "result":10001,
+                "message":"Invalid Parameters"
             }
             
 ### Delete Device [DELETE]
@@ -75,8 +75,8 @@ Delete device by device ID and device password.
     + Body
 
             {
-                "DeviceId": "WotD0123456789",
-                "DevicePassword": "SomeRandomPasswordForDevice"
+                "deviceId": "WotD0123456789",
+                "devicePassword": "SomeRandomPasswordForDevice"
             } 
 
 
@@ -85,7 +85,7 @@ Delete device by device ID and device password.
     + Body
 
             {
-                "Result": 0
+                "result": 0
             }  
 
 + Response 400 (application/json)
@@ -93,8 +93,8 @@ Delete device by device ID and device password.
     + Body
 
             {
-                "Result":10002,
-                "Message":"Invalid DeviceId"
+                "result":10002,
+                "message":"Invalid DeviceId"
             }
             
 ## Device Distribution [/dev/distribution]
@@ -117,7 +117,7 @@ Get M2M domain from cloud.
     + Body
 
             {
-                "DeviceId": "WotD0123456789"
+                "deviceId": "WotD0123456789"
             } 
             
 + Response 200 (application/json)
@@ -125,8 +125,8 @@ Get M2M domain from cloud.
     + Body
 
             {
-                "M2mHost":"s123456.m2m.mjyun.com",
-                "M2mPort":"3128"
+                "m2mHost":"s123456.m2m.mjyun.com",
+                "m2mPort":3128
             }
             
 + Response 400 (application/json)
@@ -134,8 +134,8 @@ Get M2M domain from cloud.
     + Body
 
             {
-                "Result":10002,
-                "Message":"Invalid DeviceId"
+                "result":10002,
+                "message":"Invalid DeviceId"
             }
             
 ## Device OTA [/dev/ota/v1.0]
@@ -159,10 +159,10 @@ Device get latest firmware from cloud.
     + Body
 
             {
-                "DeviceId": "WotD0123456789",
-                "DevicePassword": "SomeRandomPasswordForDevice",
-                "FirmwareId":"WotF0123456789",
-                "FirmwareVersion":"1.0.0.0"
+                "deviceId": "WotD0123456789",
+                "devicePassword": "SomeRandomPasswordForDevice",
+                "firmwareId":"WotF0123456789",
+                "firmwareVersion":"1.0.0.0"
             } 
             
 + Response 200 (application/json)
@@ -170,10 +170,10 @@ Device get latest firmware from cloud.
     + Body
 
             {
-                "NeedUpdate":"1",
-                "FirmwareVersion":"1.0.0.1",
-                "FirmwareUrl":"http://download.wot.mjyun.com/xxxxxxx.bin",
-                "FirmwareMD5":"8c34d611f057adab20af1dde636be4bb"
+                "needUpdate":1,
+                "firmwareVersion":"1.0.0.1",
+                "firmwareUrl":"http://download.wot.mjyun.com/xxxxxxx.bin",
+                "firmwareMD5":"8c34d611f057adab20af1dde636be4bb"
             }
 
 + Response 200 (application/json)
@@ -181,7 +181,7 @@ Device get latest firmware from cloud.
     + Body 
 
             {
-                "NeedUpdate":"0"
+                "needUpdate":0
             }
             
 + Response 400 (application/json)
@@ -189,8 +189,8 @@ Device get latest firmware from cloud.
     + Body
 
             {
-                "Result":10002,
-                "Message":"Invalid DeviceId"
+                "result":10002,
+                "message":"Invalid DeviceId"
             }
 
 
@@ -218,7 +218,7 @@ Get the verification code, used for register, change password or other Verificat
     + Body
 
             {
-                "PhoneNumber": "13912344321"
+                "phoneNumber": "13912344321"
             }
     
 + Response 200 (application/json)
@@ -226,8 +226,8 @@ Get the verification code, used for register, change password or other Verificat
     + Body 
         
             {
-                "Result": 0,
-                "Message": "Ok"
+                "result": 0,
+                "message": "Ok"
             }
 
 + Response 400 (application/json)
@@ -235,8 +235,8 @@ Get the verification code, used for register, change password or other Verificat
     + Body
     
             {
-                "Result": 10001,
-                "Message": "Invalid Parameters"
+                "result": 10001,
+                "message": "Invalid Parameters"
             }
 
 
@@ -268,9 +268,9 @@ First step is call other interface to get the verification code.
     + Body
 
             {
-                "PhoneNumber": "13912344321",
-                "Code": "778623",
-                "Password": "UserPasswd"
+                "phoneNumber": "13912344321",
+                "code": "778623",
+                "password": "UserPasswd"
             }
     
 + Response 200 (application/json)
@@ -278,9 +278,9 @@ First step is call other interface to get the verification code.
     + Body 
         
             {
-                "Result": 0,
-                "UserId": "WotU0000000001",
-                "Token": "tkn_b3275960d68fda9d831facc0426c3bbc"
+                "result": 0,
+                "userId": "WotU0000000001",
+                "token": "tkn_b3275960d68fda9d831facc0426c3bbc"
             }
 
 + Response 400 (application/json)
@@ -288,8 +288,8 @@ First step is call other interface to get the verification code.
     + Body
     
             {
-                "Result": 10001,
-                "Message": "Invalid Parameters"
+                "result": 10001,
+                "message": "Invalid Parameters"
             }
 
 ### User Login [GET]
@@ -314,8 +314,8 @@ User login by phone and password, get the userid
     + Body
 
             {
-                "PhoneNumber": "13912344321",
-                "Password": "UserPasswd"
+                "phoneNumber": "13912344321",
+                "password": "UserPasswd"
             }
     
 + Response 200 (application/json)
@@ -323,9 +323,9 @@ User login by phone and password, get the userid
     + Body 
         
             {
-                "Result": 0,
-                "UserId": "WotU0000000001",
-                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc"
+                "result": 0,
+                "userId": "WotU0000000001",
+                "token":"tkn_b3275960d68fda9d831facc0426c3bbc"
             }
 
 + Response 400 (application/json)
@@ -333,8 +333,8 @@ User login by phone and password, get the userid
     + Body
     
             {
-                "Result": 10001,
-                "Message": "Invalid Parameters"
+                "result": 10001,
+                "message": "Invalid Parameters"
             }
             
 ## Operate Device [/usr/dev]
@@ -361,16 +361,16 @@ Bind ONE Device by dvid and password.
     + Body
 
             {
-                "UserId":"WotU0000000001",
-                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc",
-                "Devices":[
+                "userId":"WotU0000000001",
+                "token":"tkn_b3275960d68fda9d831facc0426c3bbc",
+                "devices":[
                     {
-                        "DeviceId":"WotD0123456789",
-                        "DevicePassword":"DevicePasswd"
+                        "deviceId":"WotD0123456789",
+                        "devicePassword":"DevicePasswd"
                     },
                     {
-                        "DeviceId":"WotD0123456788",
-                        "DevicePassword":"DevicePasswd"
+                        "deviceId":"WotD0123456788",
+                        "devicePassword":"DevicePasswd"
                     }
                 ]
             }
@@ -382,12 +382,12 @@ Bind ONE Device by dvid and password.
     + Body 
  
             {
-                "Result":0,
-                "Success":[
+                "result":0,
+                "success":[
                     "WotD0123456789",
                     "WotD0123456788"
                 ],
-                "Failed":[
+                "failed":[
                     "WotD0123456789"
                 ]
             }
@@ -398,8 +398,8 @@ Bind ONE Device by dvid and password.
     + Body
     
             {
-                "Result": 10001,
-                "Message": "Invalid Parameters"
+                "result": 10001,
+                "message": "Invalid Parameters"
             }
 
 ### Unbind Device [DELETE]
@@ -423,14 +423,14 @@ UnBind ONE Device by UserID/DeviceID.
     + Body
 
             {
-                "UserId":"WotU0000000001",
-                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc",
-                "Devices":[
+                "userId":"WotU0000000001",
+                "token":"tkn_b3275960d68fda9d831facc0426c3bbc",
+                "devices":[
                     {
-                        "DeviceId":"WotD0123456789"
+                        "deviceId":"WotD0123456789"
                     },
                     {
-                        "DeviceId":"WotD0123456788"
+                        "deviceId":"WotD0123456788"
                     }
                 ]
             }
@@ -442,12 +442,12 @@ UnBind ONE Device by UserID/DeviceID.
     + Body 
         
             {
-                "Result":0,
-                "Success":[
+                "result":0,
+                "success":[
                     "WotD0123456789",
                     "WotD0123456788"
                 ],
-                "Failed":[
+                "failed":[
                     "WotD0123456789"
                 ]
             }
@@ -458,8 +458,8 @@ UnBind ONE Device by UserID/DeviceID.
     + Body
     
             {
-                "Result": 10001,
-                "Message": "Invalid Parameters"
+                "result": 10001,
+                "message": "Invalid Parameters"
             }
 
 ### List Devices [GET]
@@ -484,8 +484,8 @@ Get devices list under the user.
     + Body
 
             {
-                "UserId": "WotU0000000001",
-                "Token":"tkn_b3275960d68fda9d831facc0426c3bbc"
+                "userId": "WotU0000000001",
+                "token":"tkn_b3275960d68fda9d831facc0426c3bbc"
             }
     
 + Response 200 (application/json)
@@ -493,13 +493,13 @@ Get devices list under the user.
     + Body 
         
             {
-                "Result": 0,
-                "Devices":[
+                "result": 0,
+                "devices":[
                     {
-                        "DeviceId":"MotD0000000001"
+                        "deviceId":"MotD0000000001"
                     },
                     {
-                        "DeviceId":"MotD0000000002"
+                        "deviceId":"MotD0000000002"
                     }
                 ]
             }
@@ -509,8 +509,8 @@ Get devices list under the user.
     + Body
     
             {
-                "Result": 10001,
-                "Message": "Invalid Parameters"
+                "result": 10001,
+                "message": "Invalid Parameters"
             }
  
 # Group Rules
@@ -533,7 +533,7 @@ We using Camel-Case for JSON object naming.
 
 | Type        | Naming rule         | example                 |
 |-------------|:-------------------:|------------------------:|
-| JSON Data   | UpperCamelCase      | ProductId               | 
+| JSON Data   | lowerCamelCase      | productId               | 
 | Class       | UpperCamelCase      | TestClass               | 
 | Variable    | lowerCamelCase      | testVariable            | 
 | Method      | lowerCamelCase      | testMethod()            | 
