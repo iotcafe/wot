@@ -339,7 +339,47 @@ User login by phone and password, get the userid
                 "result": 10001,
                 "message": "Invalid Parameters"
             }
-            
+           
+### User Token check [OPTIONS]
+
+Check the token is valid?
+
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid parameters                      |
+| 400         | 10005       | Invalid token                           |
+
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "userId": "WotU0000000001",
+                "token":"tkn_b3275960d68fda9d831facc0426c3bbc"
+            }
+    
++ Response 200 (application/json)
+
+    + Body 
+        
+            {
+                "result": 0,
+                "userId": "WotU0000000001",
+                "token":"tkn_b3275960d68fda9d831facc0426c3bbc"
+            }
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "result": 10001,
+                "message": "Invalid Parameters"
+            }
+ 
 ## Operate Device [/usr/dev]
 
 ### Bind Device [POST]
