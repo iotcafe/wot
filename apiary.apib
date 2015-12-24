@@ -99,7 +99,7 @@ Delete device by device ID and device password.
                 "message":"Invalid DeviceId"
             }
             
-## Device Distribution [/dev/distribution]
+## Distribute Device [/dev/distribution]
 
 ### POST [POST]
 
@@ -198,6 +198,133 @@ Device get latest firmware from cloud.
                 "message":"Invalid DeviceId"
             }
 
+## Bind Device [/dev/bind]
+
+### POST [POST]
+
+Bind ONE Device by dvid and password.
+
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid parameters                      |
+| 400         | 10003       | Invalid device ID                       |
+| 400         | 10004       | Invalid device password                 |
+| 400         | 10005       | Invalid request method                  |
+| 400         | 10014       | Invalid User ID                         |
+| 400         | 10015       | Invalid Token                           |
+| 400         | 20003       | Error of Redis                          |
+| 400         | 20004       | Error of Db                             |
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "userId":"WotU0000000001",
+                "token":"tkn_b3275960d68fda9d831facc0426c3bbc",
+                "devices":[
+                    {
+                        "deviceId":"WotD0123456789",
+                        "devicePassword":"DevicePasswd"
+                    },
+                    {
+                        "deviceId":"WotD0123456788",
+                        "devicePassword":"DevicePasswd"
+                    }
+                ]
+            }
+
+   
+ 
++ Response 200 (application/json)
+
+    + Body 
+ 
+            {
+                "result":0,
+                "success":[
+                    "WotD0123456789",
+                    "WotD0123456788"
+                ],
+                "failed":[
+                    "WotD0123456789"
+                ]
+            }
+       
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "result": 10001,
+                "message": "Invalid Parameters"
+            }
+
+
+## Unbind Device [/dev/unbind]
+
+### POST [POST]
+
+UnBind ONE Device by UserID/DeviceID.
+ 
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid parameters                      |
+| 400         | 10003       | Invalid device ID                       |
+| 400         | 10005       | Invalid request method                  |
+| 400         | 10014       | Invalid User ID                         |
+| 400         | 10015       | Invalid Token                           |
+| 400         | 20003       | Error of Redis                          |
+| 400         | 20004       | Error of Db                             |
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "userId":"WotU0000000001",
+                "token":"tkn_b3275960d68fda9d831facc0426c3bbc",
+                "devices":[
+                    {
+                        "deviceId":"WotD0123456789"
+                    },
+                    {
+                        "deviceId":"WotD0123456788"
+                    }
+                ]
+            }
+
+   
+ 
++ Response 200 (application/json)
+
+    + Body 
+        
+            {
+                "result":0,
+                "success":[
+                    "WotD0123456789",
+                    "WotD0123456788"
+                ],
+                "failed":[
+                    "WotD0123456789"
+                ]
+            }
+
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "result": 10001,
+                "message": "Invalid Parameters"
+            }
 
 # Group API for users
 
@@ -404,133 +531,9 @@ Check the token is valid?
                 "result": 10001,
                 "message": "Invalid Parameters"
             }
- 
-## Operate Device [/usr/dev]
 
-### Bind Device [POST]
-
-Bind ONE Device by dvid and password.
-
-#### Errors
-
-| HTTP Status | Result Code | Message                                 |
-|-------------|:-----------:|----------------------------------------:|
-| 400         | 10001       | Invalid parameters                      |
-| 400         | 10003       | Invalid device ID                       |
-| 400         | 10004       | Invalid device password                 |
-| 400         | 10005       | Invalid request method                  |
-| 400         | 10014       | Invalid User ID                         |
-| 400         | 10015       | Invalid Token                           |
-| 400         | 20003       | Error of Redis                          |
-| 400         | 20004       | Error of Db                             |
-
-+ Request (application/json)
-
-    + Body
-
-            {
-                "userId":"WotU0000000001",
-                "token":"tkn_b3275960d68fda9d831facc0426c3bbc",
-                "devices":[
-                    {
-                        "deviceId":"WotD0123456789",
-                        "devicePassword":"DevicePasswd"
-                    },
-                    {
-                        "deviceId":"WotD0123456788",
-                        "devicePassword":"DevicePasswd"
-                    }
-                ]
-            }
-
-   
- 
-+ Response 200 (application/json)
-
-    + Body 
- 
-            {
-                "result":0,
-                "success":[
-                    "WotD0123456789",
-                    "WotD0123456788"
-                ],
-                "failed":[
-                    "WotD0123456789"
-                ]
-            }
-       
-
-+ Response 400 (application/json)
-
-    + Body
-    
-            {
-                "result": 10001,
-                "message": "Invalid Parameters"
-            }
-
-### Unbind Device [DELETE]
-
-UnBind ONE Device by UserID/DeviceID.
- 
-#### Errors
-
-| HTTP Status | Result Code | Message                                 |
-|-------------|:-----------:|----------------------------------------:|
-| 400         | 10001       | Invalid parameters                      |
-| 400         | 10003       | Invalid device ID                       |
-| 400         | 10005       | Invalid request method                  |
-| 400         | 10014       | Invalid User ID                         |
-| 400         | 10015       | Invalid Token                           |
-| 400         | 20003       | Error of Redis                          |
-| 400         | 20004       | Error of Db                             |
-
-+ Request (application/json)
-
-    + Body
-
-            {
-                "userId":"WotU0000000001",
-                "token":"tkn_b3275960d68fda9d831facc0426c3bbc",
-                "devices":[
-                    {
-                        "deviceId":"WotD0123456789"
-                    },
-                    {
-                        "deviceId":"WotD0123456788"
-                    }
-                ]
-            }
-
-   
- 
-+ Response 200 (application/json)
-
-    + Body 
-        
-            {
-                "result":0,
-                "success":[
-                    "WotD0123456789",
-                    "WotD0123456788"
-                ],
-                "failed":[
-                    "WotD0123456789"
-                ]
-            }
-
-
-+ Response 400 (application/json)
-
-    + Body
-    
-            {
-                "result": 10001,
-                "message": "Invalid Parameters"
-            }
-
-### List Devices [GET]
+## List Bound Devices [/usr/devlist]
+### POST [POST]
 
 Get devices list under the user.
 
