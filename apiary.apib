@@ -9,9 +9,9 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 # Group API for devices
 
-## Devices [/dev/devices]
+## Create Device [/dev/create]
 
-### Create Device [POST]
+### POST [POST]
 
 Create device by product ID, and get device ID.
 
@@ -56,7 +56,9 @@ Create device by product ID, and get device ID.
                 "message":"Invalid Parameters"
             }
             
-### Delete Device [DELETE]
+## Delete Device [/dev/delete]
+            
+### POST [POST]
 
 Delete device by device ID and device password.
 
@@ -99,7 +101,7 @@ Delete device by device ID and device password.
             
 ## Device Distribution [/dev/distribution]
 
-### Device Distribution [POST]
+### POST [POST]
 
 Get M2M domain from cloud.
 
@@ -141,7 +143,7 @@ Get M2M domain from cloud.
             
 ## Device OTA [/dev/ota]
 
-### Device OTA [POST]
+### POST [POST]
 
 Device get latest firmware from cloud.
 
@@ -199,9 +201,9 @@ Device get latest firmware from cloud.
 
 # Group API for users
 
-## Code [/usr/code]
+## Phone Verification Code [/usr/verificationcode]
 
-### Phone Verification Code [GET]
+### POST [POST]
 
 Get the verification code, used for register, change password or other Verification operation.
 
@@ -221,7 +223,26 @@ Get the verification code, used for register, change password or other Verificat
     + Body
 
             {
+                "method": "phonic",
                 "phoneNumber": "13912344321"
+            }
+            
++ Request (application/json)
+
+    + Body
+
+            {
+                "method": "sms",
+                "phoneNumber": "13912344321"
+            }
+            
++ Request (application/json)
+
+    + Body
+
+            {
+                "method": "email",
+                "email": "someone@mars.com"
             }
     
 + Response 200 (application/json)
@@ -243,9 +264,9 @@ Get the verification code, used for register, change password or other Verificat
             }
 
 
-## Users [/usr/users]
+## User Register [/usr/register]
 
-### User Register [POST]
+### POST [POST]
 
 Register user by phonenum/password/code, get the userid. We also use to change the password, to avoid this: 
  -One user's phone has been registered, but he/she forgot. 
@@ -295,7 +316,9 @@ First step is call other interface to get the verification code.
                 "message": "Invalid Parameters"
             }
 
-### User Login [GET]
+## User Login [/usr/login]
+
+### POST [POST]
 
 User login by phone and password, get the userid
 
@@ -339,8 +362,10 @@ User login by phone and password, get the userid
                 "result": 10001,
                 "message": "Invalid Parameters"
             }
-           
-### User Token check [OPTIONS]
+            
+## User check token [/usr/checktoken]
+
+### POST [POST]
 
 Check the token is valid?
 
