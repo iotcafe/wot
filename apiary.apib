@@ -11,7 +11,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 ## Create Device [/dev/create]
 
-### POST [POST]
+### POST ./dev/create [POST]
 
 Create device by product ID, and get device ID.
 
@@ -58,7 +58,7 @@ Create device by product ID, and get device ID.
             
 ## Delete Device [/dev/delete]
             
-### POST [POST]
+### POST ./dev/delete [POST]
 
 Delete device by device ID and device password.
 
@@ -101,7 +101,7 @@ Delete device by device ID and device password.
             
 ## Distribute Device [/dev/distribution]
 
-### POST [POST]
+### POST ./dev/distribution [POST]
 
 Get M2M domain from cloud.
 
@@ -143,7 +143,7 @@ Get M2M domain from cloud.
             
 ## Device OTA [/dev/ota]
 
-### POST [POST]
+### POST ./dev/ota [POST]
 
 Device get latest firmware from cloud.
 
@@ -200,7 +200,7 @@ Device get latest firmware from cloud.
 
 ## Bind Device [/dev/bind]
 
-### POST [POST]
+### POST ./dev/bind [POST]
 
 Bind ONE Device by dvid and password.
 
@@ -266,7 +266,7 @@ Bind ONE Device by dvid and password.
 
 ## Unbind Device [/dev/unbind]
 
-### POST [POST]
+### POST ./dev/unbind [POST]
 
 UnBind ONE Device by UserID/DeviceID.
  
@@ -330,7 +330,7 @@ UnBind ONE Device by UserID/DeviceID.
 
 ## Verification Over Telephone Voice Code [/usr/verify/telephone]
 
-### POST [POST]
+### POST ./usr/verify/telephone [POST]
 
 Without code in JSON:
 Get the verification code, used for register, change password or other Verification operation.
@@ -388,7 +388,7 @@ Verify this code.
 
 ## Verification Over SMS Code [/usr/verify/sms]
 
-### POST [POST]
+### POST ./usr/verify/sms [POST]
 
 Without code in JSON:
 Get the verification code, used for register, change password or other Verification operation.
@@ -439,7 +439,7 @@ Verify this code.
 
 ## Verification Over email address [/usr/verify/email]
 
-### POST [POST]
+### POST ./usr/verify/email [POST]
 
 Without code in JSON:
 Get the verification code, used for register, change password or other Verification operation.
@@ -489,7 +489,7 @@ Verify this code.
             
 ## Check User Token [/usr/verify/token]
 
-### POST [POST]
+### POST ./usr/verify/token [POST]
 
 Check the token is valid?
 
@@ -532,7 +532,7 @@ Check the token is valid?
             
 ## User Register [/usr/register]
 
-### POST [POST]
+### POST ./usr/register [POST]
 
 Register user by phonenum/password/code, get the userid. We also use to change the password, to avoid this: 
  -One user's phone has been registered, but he/she forgot. 
@@ -584,7 +584,7 @@ First step is call other interface to get the verification code.
 
 ## User Login [/usr/login]
 
-### POST [POST]
+### POST ./usr/login [POST]
 
 User login by phone and password, get the userid
 
@@ -631,7 +631,7 @@ User login by phone and password, get the userid
 
 
 ## List Bound Devices [/usr/devlist]
-### POST [POST]
+### POST ./usr/devlist A[POST]
 
 Get devices list under the user.
 
