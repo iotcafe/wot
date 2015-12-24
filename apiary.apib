@@ -328,11 +328,15 @@ UnBind ONE Device by UserID/DeviceID.
 
 # Group API for users
 
-## Phone Verification Code [/usr/verificationcode]
+## Verification Over Telephone Voice Code [/usr/verify/telephone]
 
 ### POST [POST]
 
+Without code in JSON:
 Get the verification code, used for register, change password or other Verification operation.
+
+With code in JSON:
+Verify this code.
 
 #### Errors
 
@@ -340,6 +344,7 @@ Get the verification code, used for register, change password or other Verificat
 |-------------|:-----------:|----------------------------------------:|
 | 400         | 10001       | Invalid parameters                      |
 | 400         | 10008       | Invalid Phone Number                    |
+| 400         | 10017       | Invalid verification code               |
 | 400         | 10009       | Too frequent to gen code in 60s         |
 | 400         | 20003       | Error of Redis                          |
 | 400         | 20004       | Error to Notice User                    |
@@ -350,7 +355,6 @@ Get the verification code, used for register, change password or other Verificat
     + Body
 
             {
-                "method": "phonic",
                 "phoneNumber": "13912344321"
             }
             
@@ -359,17 +363,108 @@ Get the verification code, used for register, change password or other Verificat
     + Body
 
             {
-                "method": "sms",
-                "phoneNumber": "13912344321"
+                "phoneNumber": "13912344321",
+                "code": "123456"
             }
+
++ Response 200 (application/json)
+
+    + Body 
+        
+            {
+                "result": 0,
+                "message": "Ok"
+            }
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "result": 10001,
+                "message": "Invalid Parameters"
+            }
+
+
+## Verification Over SMS Code [/usr/verify/sms]
+
+### POST [POST]
+
+Without code in JSON:
+Get the verification code, used for register, change password or other Verification operation.
+
+With code in JSON:
+Verify this code.
+
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid parameters                      |
+| 400         | 10008       | Invalid Phone Number                    |
+| 400         | 10017       | Invalid verification code               |
+| 400         | 10009       | Too frequent to gen code in 60s         |
+| 400         | 20003       | Error of Redis                          |
+| 400         | 20004       | Error to Notice User                    |
+
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "phoneNumber": "13912344321"
+            }      
+            
++ Response 200 (application/json)
+
+
+    + Body 
+        
+            {
+                "result": 0,
+                "message": "Ok"
+            }
+
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "result": 10001,
+                "message": "Invalid Parameters"
+            }
+
+
+## Verification Over email address [/usr/verify/email]
+
+### POST [POST]
+
+Without code in JSON:
+Get the verification code, used for register, change password or other Verification operation.
+
+With code in JSON:
+Verify this code.
+
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid parameters                      |
+| 400         | 10016       | Invalid Email address                   |
+| 400         | 10017       | Invalid verification code               |
+| 400         | 10009       | Too frequent to gen code in 60s         |
+| 400         | 20003       | Error of Redis                          |
+| 400         | 20004       | Error to Notice User                    |
+
             
 + Request (application/json)
 
     + Body
 
             {
-                "method": "email",
-                "email": "someone@mars.com"
+                "email": "someone@mjyun.com"
             }
     
 + Response 200 (application/json)
@@ -391,6 +486,50 @@ Get the verification code, used for register, change password or other Verificat
             }
 
 
+            
+## Check User Token [/usr/verify/token]
+
+### POST [POST]
+
+Check the token is valid?
+
+#### Errors
+
+| HTTP Status | Result Code | Message                                 |
+|-------------|:-----------:|----------------------------------------:|
+| 400         | 10001       | Invalid parameters                      |
+| 400         | 10005       | Invalid token                           |
+
+
++ Request (application/json)
+
+    + Body
+
+            {
+                "userId": "WotU0000000001",
+                "token":"tkn_b3275960d68fda9d831facc0426c3bbc"
+            }
+    
++ Response 200 (application/json)
+
+    + Body 
+        
+            {
+                "result": 0,
+                "userId": "WotU0000000001",
+                "token":"tkn_b3275960d68fda9d831facc0426c3bbc"
+            }
+
++ Response 400 (application/json)
+
+    + Body
+    
+            {
+                "result": 10001,
+                "message": "Invalid Parameters"
+            }
+            
+            
 ## User Register [/usr/register]
 
 ### POST [POST]
@@ -489,48 +628,7 @@ User login by phone and password, get the userid
                 "result": 10001,
                 "message": "Invalid Parameters"
             }
-            
-## User check token [/usr/checktoken]
 
-### POST [POST]
-
-Check the token is valid?
-
-#### Errors
-
-| HTTP Status | Result Code | Message                                 |
-|-------------|:-----------:|----------------------------------------:|
-| 400         | 10001       | Invalid parameters                      |
-| 400         | 10005       | Invalid token                           |
-
-
-+ Request (application/json)
-
-    + Body
-
-            {
-                "userId": "WotU0000000001",
-                "token":"tkn_b3275960d68fda9d831facc0426c3bbc"
-            }
-    
-+ Response 200 (application/json)
-
-    + Body 
-        
-            {
-                "result": 0,
-                "userId": "WotU0000000001",
-                "token":"tkn_b3275960d68fda9d831facc0426c3bbc"
-            }
-
-+ Response 400 (application/json)
-
-    + Body
-    
-            {
-                "result": 10001,
-                "message": "Invalid Parameters"
-            }
 
 ## List Bound Devices [/usr/devlist]
 ### POST [POST]
@@ -653,6 +751,8 @@ Allow: 0,GET 1,HEAD 2,PUT 3,DELETE 4,POST 5,OPTIONS
 | 400         | 10013       | Unregisted Phone                        |
 | 400         | 10014       | Invalid User ID                         |
 | 400         | 10015       | Invalid Token                           |
+| 400         | 10016       | Invalid Email address                   |
+| 400         | 10017       | Invalid verification code               |
 | 400         | 20001       | Error gen dvid                          |
 | 400         | 20002       | Error of DB                             |
 | 400         | 20003       | Error of Redis                          |
