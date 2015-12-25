@@ -328,9 +328,9 @@ UnBind ONE Device by UserID/DeviceID.
 
 # Group API for users
 
-## Verification Over Telephone Voice Code [/usr/verify/telephone]
+## Verification Over Telephone Voice Code [/user/verify/telephone]
 
-### POST ./usr/verify/telephone [POST]
+### POST ./user/verify/telephone [POST]
 
 Without code in JSON:
 Get the verification code, used for register, change password or other Verification operation.
@@ -386,9 +386,9 @@ Verify this code.
             }
 
 
-## Verification Over SMS Code [/usr/verify/sms]
+## Verification Over SMS Code [/user/verify/sms]
 
-### POST ./usr/verify/sms [POST]
+### POST ./user/verify/sms [POST]
 
 Without code in JSON:
 Get the verification code, used for register, change password or other Verification operation.
@@ -437,9 +437,9 @@ Verify this code.
             }
 
 
-## Verification Over email address [/usr/verify/email]
+## Verification Over email address [/user/verify/email]
 
-### POST ./usr/verify/email [POST]
+### POST ./user/verify/email [POST]
 
 Without code in JSON:
 Get the verification code, used for register, change password or other Verification operation.
@@ -487,9 +487,9 @@ Verify this code.
 
 
             
-## Check User Token [/usr/verify/token]
+## Check User Token [/user/verify/token]
 
-### POST ./usr/verify/token [POST]
+### POST ./user/verify/token [POST]
 
 Check the token is valid?
 
@@ -530,9 +530,9 @@ Check the token is valid?
             }
             
             
-## User Register [/usr/register]
+## User Register [/user/register]
 
-### POST ./usr/register [POST]
+### POST ./user/register [POST]
 
 Register user by phonenum/password/code, get the userid. We also use to change the password, to avoid this: 
  -One user's phone has been registered, but he/she forgot. 
@@ -582,9 +582,9 @@ First step is call other interface to get the verification code.
                 "message": "Invalid Parameters"
             }
 
-## User Login [/usr/login]
+## User Login [/user/login]
 
-### POST ./usr/login [POST]
+### POST ./user/login [POST]
 
 User login by phone and password, get the userid
 
@@ -630,8 +630,8 @@ User login by phone and password, get the userid
             }
 
 
-## List Bound Devices [/usr/devlist]
-### POST ./usr/devlist A[POST]
+## List Bound Devices [/user/devlist]
+### POST ./user/devlist [POST]
 
 Get devices list under the user.
 
