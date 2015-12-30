@@ -14,6 +14,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 ### POST ./dev/create [POST]
 
 Create device by product ID, and get device ID.
+Sub-product ID used for wechat application.
 
 #### Errors
 
@@ -32,6 +33,7 @@ Create device by product ID, and get device ID.
 
             {
                 "productId": "WotP0123456789",
+                "subProductId": "3707",
                 "deviceMac": "18FE34010203",
                 "devicePassword": "SomeRandomPasswordForDevice",
                 "hardwareVersion":"1.0.0.0"
@@ -665,13 +667,17 @@ Get devices list under the user.
                 "result": 0,
                 "devices":[
                     {
-                        "deviceId":"MotD0000000001",
+                        "productId": "WotP0123456789",
+                        "subProductId": "3707",
+                        "deviceId":"WotD0000000001",
                         "state":"{}",
                         "type":"light",
                         "name":"bath-light"
                     },
                     {
-                        "deviceId":"MotD0000000002",
+                        "productId": "WotP0123456789",
+                        "subProductId": "3708",
+                        "deviceId":"WotD0000000002",
                         "state":"{}",
                         "type":"light",
                         "name":"bedroom-light"
