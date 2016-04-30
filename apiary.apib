@@ -15,7 +15,7 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
     + signature:80015209ee5bed5f589362faf070d303 (string, required) - Signature for this request
     + timestamp:1461996872000 (number, required) - Current timestamp in UTC
 
-## Device Create [POST /device{?signature,timestamp}]
+### Device Create [POST /device{?signature,timestamp}]
 
 Create device by product ID, and get device ID.
 Sub-product ID used for wechat application.
@@ -66,7 +66,7 @@ Note: Wechat original ID (mpId) used only for wechat application.
                 "message":"Invalid Parameters"
             }
             
-## Device Reset [POST /device/{device_id}/reset{?signature,timestamp}]
+### Device Reset [POST /device/{device_id}/reset{?signature,timestamp}]
 Unbind all user form device by device ID, and wipe all history data for this device.
 
 #### Errors
@@ -113,7 +113,7 @@ Unbind all user form device by device ID, and wipe all history data for this dev
             }
             
 
-## Device Distribute [POST /device/{device_id}/distribute{?signature,timestamp}]
+### Device Distribute [POST /device/{device_id}/distribute{?signature,timestamp}]
 Get M2M domain from cloud.
 
 #### Errors
@@ -161,7 +161,7 @@ Get M2M domain from cloud.
             }
             
 
-## Device OTA [POST  /device/{device_id}/ota{?signature,timestamp}]
+### Device OTA [POST  /device/{device_id}/ota{?signature,timestamp}]
 
 Device get latest firmware from cloud.
 
