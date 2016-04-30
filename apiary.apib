@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: https://wot.vowstar.com/
+HOST: https://iot.deving.org/api/v1
 
 # WoT API
 
@@ -9,9 +9,13 @@ About HTTP status code, please see RFC 2616(RFC 2518/RFC 2817/RFC 2295/RFC 2774/
 
 # Group API for devices
 
-## Create Device [/dev/create]
+## Device [/device]
 
-### POST ./dev/create [POST]
++ Attributes (object)
+    + signature:80015209ee5bed5f589362faf070d303 (string, required) - Signature for this request
+    + timestamp:1461996872000 (number, required) - Current timestamp in UTC
+
+### Device Create [POST /device{?signature,timestamp}]
 
 Create device by product ID, and get device ID.
 Sub-product ID used for wechat application.
@@ -28,16 +32,20 @@ Note: Wechat original ID (mpId) used only for wechat application.
 | 400         | 20002       | Error of DB                             |
 
 
++ Attributes (Device)
+
++ Parameters
+    + signature:80015209ee5bed5f589362faf070d303 (string, required) - Signature for this request
+    + timestamp:1461996872000 (number, required) - Current timestamp in UTC
+    
+
 + Request (application/json)
 
     + Body
 
             {
-                "productId": "WotP0123456789",
-                "subProductId": "3707",
-                "deviceMac": "18FE34010203",
-                "devicePassword": "SomeRandomPasswordForDevice",
-                "hardwareVersion":"1.0.0.0"
+                "product_id": "WotP0123456789",
+                "device_mac": "18FE34010203"
             }   
 
 + Response 200 (application/json)
@@ -46,8 +54,7 @@ Note: Wechat original ID (mpId) used only for wechat application.
 
             {
                 "result": 0,
-                "deviceId": "WotD0123456789",
-                "mpId": "gh_801b23c46162"
+                "device_id": "WotD0123456789"
             }  
             
 + Response 400 (application/json)
@@ -59,11 +66,8 @@ Note: Wechat original ID (mpId) used only for wechat application.
                 "message":"Invalid Parameters"
             }
             
-## Delete Device [/dev/delete]
-            
-### POST ./dev/delete [POST]
-
-Delete device by device ID and device password.
+### Device Reset [POST /device/{device_id}/reset{?signature,timestamp}]
+Unbind all user form device by device ID, and wipe all history data for this device.
 
 #### Errors
 
@@ -75,13 +79,19 @@ Delete device by device ID and device password.
 | 400         | 20002       | Error of DB                             |
 
 
++ Attributes (Device)
+
++ Parameters
+    + signature:80015209ee5bed5f589362faf070d303 (string, required) - Signature for this request
+    + timestamp:1461996872000 (number, required) - Current timestamp in UTC
+    + device_id:870c61ee-0e9e-11e6-a148-3e1d05defe78 (string, required) - Unique ID for device
+
+
 + Request (application/json)
 
     + Body
 
             {
-                "deviceId": "WotD0123456789",
-                "devicePassword": "SomeRandomPasswordForDevice"
             } 
 
 
@@ -102,10 +112,8 @@ Delete device by device ID and device password.
                 "message":"Invalid DeviceId"
             }
             
-## Distribute Device [/dev/distribute]
 
-### POST ./dev/distribute [POST]
-
+### Device Distribute [POST /device/{device_id}/distribute{?signature,timestamp}]
 Get M2M domain from cloud.
 
 #### Errors
@@ -117,12 +125,20 @@ Get M2M domain from cloud.
 | 400         | 10005       | Invalid request method                  |
 | 400         | 20002       | Error of DB                             |
 
++ Attributes (Device)
+
++ Parameters
+    + signature:80015209ee5bed5f589362faf070d303 (string, required) - Signature for this request
+    + timestamp:1461996872000 (number, required) - Current timestamp in UTC
+    + device_id:870c61ee0e9e11e6a1483e1d05defe78 (string, required) - Unique ID for device
+
+
+
 + Request (application/json)
 
     + Body
 
             {
-                "deviceId": "WotD0123456789"
             } 
             
 + Response 200 (application/json)
@@ -144,9 +160,8 @@ Get M2M domain from cloud.
                 "message":"Invalid DeviceId"
             }
             
-## Device OTA [/dev/ota]
 
-### POST ./dev/ota [POST]
+### POST Device OTA [POST  /device/{device_id}/ota{?signature,timestamp}]
 
 Device get latest firmware from cloud.
 
@@ -160,13 +175,18 @@ Device get latest firmware from cloud.
 | 400         | 10007       | Invalid firmware ID                     |
 | 400         | 20002       | Error of DB                             |
 
++ Attributes (Device)
+
++ Parameters
+    + signature:80015209ee5bed5f589362faf070d303 (string, required) - Signature for this request
+    + timestamp:1461996872000 (number, required) - Current timestamp in UTC
+    + device_id:870c61ee0e9e11e6a1483e1d05defe78 (string, required) - Unique ID for device
+
 + Request (application/json)
 
     + Body
 
             {
-                "deviceId": "WotD0123456789",
-                "devicePassword": "SomeRandomPasswordForDevice",
                 "firmwareId":"WotF0123456789",
                 "firmwareVersion":"1.0.0.0"
             } 
@@ -181,15 +201,6 @@ Device get latest firmware from cloud.
                 "firmwareVersion":"1.0.0.1",
                 "firmwareUrl":"http://download.wot.mjyun.com/xxxxxxx.bin",
                 "firmwareMD5":"8c34d611f057adab20af1dde636be4bb"
-            }
-
-+ Response 200 (application/json)
-
-    + Body 
-
-            {
-                "result": 0,
-                "needUpdate":0
             }
             
 + Response 400 (application/json)
@@ -361,7 +372,7 @@ Verify this code.
                 "phoneNumber": "13912344321"
             }
             
-+ Request (application/json)
++ Request 200 (application/json)
 
     + Body
 
